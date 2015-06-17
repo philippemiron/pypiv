@@ -1,0 +1,8 @@
+# Data file
+*.dat
+*.plt
+*.lay
+
+# temp files
+*.swp
+*~
