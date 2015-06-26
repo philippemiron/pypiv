@@ -17,7 +17,7 @@ along with this program.  If not, see http://www.gnu.org/licenses
 
 ###Simple PIV script
 
-I built this to understand Particle Image Velocimetry (PIV) and how commercial softwares calculate velocity fields from particles images. 
+I built this to understand Particle Image Velocimetry (PIV) and how commercial softwares calculate velocity fields from particle images. 
 
 Theses scripts use numpy library to evaluate the correlation using bidimensional fast fourrier transfert. 
 
