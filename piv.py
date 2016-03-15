@@ -88,8 +88,8 @@ class correlation:
 # parsing image file
 img1 = image(file1, pixel_x, pixel_y, bits)
 img2 = image(file2, pixel_x, pixel_y, bits)
-a = windows(img1, 64, [5, 5])
-b = windows(img2, 64, [5, 5])
+a = windows(img1, 64, [1, 1])
+b = windows(img2, 64, [1, 1])
 a.export()
 b.export()
 
