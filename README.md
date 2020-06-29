@@ -1,6 +1,6 @@
-#pypiv
+# pypiv
 
-###Simple PIV script
+## Simple PIV script
 
 I built this to understand Particle Image Velocimetry (PIV) and how commercial softwares calculate velocity fields from particle images. 
 
