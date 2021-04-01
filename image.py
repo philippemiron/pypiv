@@ -16,8 +16,8 @@ file2 = "B00002.dat"
 ppp = 0.05 # particle per pixels
 N = int(ppp * image_size[0]*image_size[1]) #number of particles
 rp = 1.8 # particle radius in pixel
-dx = 12 #pixel displacement x
-dy = 7 #pixel displacement y
+dx = 20 #pixel displacement x
+dy = 5 #pixel displacement y
 
 # all black image
 im = [[0 for i in range(image_size[1])] for j in range(image_size[0])]

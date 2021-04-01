@@ -1,10 +1,5 @@
-from numpy import fft, conj, asarray
-
-pixel_x = 1280
-pixel_y = 800
-bits = 12
-file1 = "B00001.dat"
-file2 = "B00002.dat"
+from numpy import fft, conj, asarray, unravel_index
+import matplotlib.pyplot as plt
 
 class image:
   def __init__(self, filename, x, y, bits):
@@ -47,7 +42,6 @@ class windows:
     return sig2d
 
   def export(self):
-    print(self.image.file[5])
     file = open("window-" + self.image.file[5] + ".dat", "w")
     file.write('TITLE = "window"\n')
     file.write('VARIABLES = "x", "y", "intensity"\n')
@@ -85,13 +79,34 @@ class correlation:
         file.write(str(i-self.size/2) + " " + str(j-self.size/2) + " " + str(self.corr[i][j]) + "\n")
     file.close()
 
+# parameters
+pixel_x = 1280
+pixel_y = 800
+bits = 12
+file1 = "B00001.dat"
+file2 = "B00002.dat"
+
 # parsing image file
 img1 = image(file1, pixel_x, pixel_y, bits)
 img2 = image(file2, pixel_x, pixel_y, bits)
+
+# get one window
+# in this example the "velocity" is
+# constant across the whole image
 a = windows(img1, 64, [1, 1])
 b = windows(img2, 64, [1, 1])
 a.export()
 b.export()
 
+# calculate correlation
 c = correlation(b, a)
 c.export()
+
+# simple plot
+fig = plt.figure()
+ax = fig.add_subplot(1,1,1)
+peak = unravel_index(c.corr.argmax(), c.corr.shape)
+ax.pcolormesh(c.corr.T)
+ax.set_title('Displacement estimated by dx=%d dy=%d.' % (peak[0]-a.size/2, peak[1]-a.size/2))
+ax.arrow(a.size/2, a.size/2, peak[0]-a.size/2, peak[1]-a.size/2, color='red', linewidth=2)
+plt.show()
