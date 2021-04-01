@@ -6,7 +6,6 @@ I built this to understand Particle Image Velocimetry (PIV) and how commercial s
 
 Theses scripts use numpy library to evaluate the correlation using bidimensional fast fourrier transfert. 
 
-- image.py: script to generate double frame of particles images with a analytical velocity fields
-- piv.py: calculate the correlation in a fixed size window of the images to evaluate displacement
-
-
+Run in this order:
+	1. image.py: script to generate double frame of particle images with a analytical velocity fields (set dx, dy)
+	2. piv.py: calculate the correlation in a selected window to evaluate displacement (should retrieve dx, dy!)
